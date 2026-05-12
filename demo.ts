@@ -28,12 +28,17 @@ export class Knobelscheit {
   }
 
   canFlip(numbers: number[], diceSum: number): boolean {
-      if (numbers.length === 0) return false;
-      if (number.some((n) => n < 1 || n > 9)) return false;
-      if (new Set(numbers).size !== numbers.length) return false;
-      if (numbers.some((n) => this.isFlipped(n))) return false
-        const sum = numbers.reduce((acc, n) => total + n, 0);
-        return sum === diceSum;
+      if (numbers.length === 0) { return false; }
+      const hasInvalidNumber = numbers.some(
+        (number) => number < 1 || number > 9 
+      );
+      if (hasInvalidNumber) { return false; }
+      const hasDuplicate = new Set(numbers).size !== numbers.length;
+      if (hasDuplicate) { return false; }
+      const hasAlreadyFlipped = numbers.some((number) => this.isFlipped(number));
+      if (hasAlreadyFlipped) { return false; }
+      const sum = numbers.reduce((total, number) => total + number, 0);
+      return sum === diceSum;
 }
 
 flip(numbers: number[], diceSum: number): boolean {

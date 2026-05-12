@@ -1,6 +1,6 @@
 import { assert, assertEquals } from "@std/assert";
 import { rollDie, rollDice, diceSum, Knobelscheit } from "./demo.ts";
-import test from "node:test";
+
 
 Deno.test("rollDie gibt eine Zahl zwischen 1 und 6 zurück", () => {
   for (let i = 0; i < 100; i++) {
@@ -55,6 +55,7 @@ Deno.test("Falsche Summe ist ungültig", () => {
 
 Deno.test("Umgekehrte Zahlen ungültig", () => {
     const game = new Knobelscheit();
+    game.flip([9], 9);
     assertEquals(game.flip([9], 9), false);
 });
 
