@@ -1,26 +1,12 @@
-import { assertEquals } from "@std/assert";
-import { formattedAddition } from "./demo.ts";
+import { assert } from "node:console";
+import { rollDie } from "./demo.ts";
 
-Deno.test("3 + 5 = 8", function addTest() {
-  // Arrange
-  const a = 3;
-  const b = 5;
-
-  // Act
-  const actual = formattedAddition(a, b);
-
-  // Assert
-  assertEquals(actual, "3 + 5 = 8");
+Deno.test("rollDie gibt eine Zahl zwischen 1 und 6 zurück", () => {
+  for (let i = 0; i < 100; i++) {
+    const result = rollDie();
+  
+    assert(result >= 1);
+    assert(result <= 6);
+    assert(Number.isInteger(result));
+  }
 });
-
-Deno.test("3 + -5 = -2", function addTest() {
-  // Given
-  const a = 3;
-  const b = -5;
-
-  // When
-  const actual = formattedAddition(a, b);
-
-  // Then
-  assertEquals(actual, "3 + -5 = -2");
-}); 

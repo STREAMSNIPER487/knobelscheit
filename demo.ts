@@ -1,5 +1,3 @@
-export function formattedAddition(a: number, b: number): string {
-  return `${a} + ${b} = ${a + b}`;
+export function rollDie(): number {
+  return Math.floor(Math.random() * 6) + 1;
 }
-
-console.log(formattedAddition(3, 2));
