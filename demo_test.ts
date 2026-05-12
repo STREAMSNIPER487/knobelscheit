@@ -1,5 +1,5 @@
 import { assert, assertEquals } from "@std/assert";
-import { rollDie, rollDice, diceSum } from "./demo.ts";
+import { rollDie, rollDice, diceSum, Knobelscheit } from "./demo.ts";
 
 Deno.test("rollDie gibt eine Zahl zwischen 1 und 6 zurück", () => {
   for (let i = 0; i < 100; i++) {
@@ -23,4 +23,11 @@ Deno.test("rollDie gibt zwei Würfel zurück", () => {
 Deno.test("diceSum berechnet Augensumme korrekt", () => {
     const result = diceSum([3, 4]);
     assertEquals(result, 7);
-})
+});
+
+Deno.test("Knobelscheit startet mit allen offenen Zahlen", () => {
+  const game = new Knobelscheit();
+  assertEquals(game.getNumbers(), [1,2,3,4,5,6,7,8,9]);
+  assertEquals(game.getOpenNumbers(), [1,2,3,4,5,6,7,8,9]);
+  assertEquals(game.getFlippedNumbers(), []);
+});
