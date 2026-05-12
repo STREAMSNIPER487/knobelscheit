@@ -26,4 +26,20 @@ export class Knobelscheit {
   isFlipped(number: number): boolean {
     return this.flippedNumbers.includes(number);
   }
+
+  canFlip(numbers: number[], diceSum: number): boolean {
+  const sum = numbers.reduce((total, number) => total + number, 0);
+  return sum === diceSum;
 }
+
+flip(numbers: number[], diceSum: number): boolean {
+  if ( !this.canFlip(numbers, diceSum)){
+  return false;
+}
+this.flippedNumbers.push(...numbers);
+this.flippedNumbers.sort((a, b) => a - b);
+return true;
+
+}
+}
+
