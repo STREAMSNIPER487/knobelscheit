@@ -65,5 +65,25 @@ export class Knobelscheit {
     .filter((value) => !Number.isNaN(value));
   }
   
+if (import.meta.main) {
+  const game = new Knobelscheit();
+  let rolls = 0;
+  console.log("Willkommen zum Knobelscheit!");
+  while (!game.isFinished()) {
+    const dice = rollDice();
+    const sum = diceSum(dice);
+    rolls++;
 
-
+    console.log(game.toString());
+    console.log(`Du hast eine ${dice[0]} und eine ${dice[1]} gewürfelt (Summe: ${sum})`);
+    const input = prompt("Welche Zahlen möchtest du umklappen? (Leer lassen zum Überspringen)");
+    const numbers = parseInput(input || "null");
+    const success = game.flip(numbers, sum);
+    if (success) {
+      console.log("Gültige Auswahl! Die Zahlen wurden umgeklappt.");
+    } else {
+      console.log("Ungültige Auswahl! Bitte versuche es erneut.");
+    }
+    console.log("Spiel bendet! Du hast alle Zahlen umgeklappt in " + rolls + " Würfen.");
+  }
+}
