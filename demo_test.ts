@@ -47,3 +47,23 @@ Deno.test("Mehere Zahlen können umgeklappt werden", () => {
   assertEquals(result, true);
   assertEquals(game.getFlippedNumbers(), [3, 6]
 )});
+
+Deno.test("Falsche Summe ist ungültig", () => {
+    const game = new Knobelscheit();
+    assertEquals(game.flip([2, 5], 10), false);
+});
+
+Deno.test("Umgekehrte Zahlen ungültig", () => {
+    const game = new Knobelscheit();
+    assertEquals(game.flip([9], 9), false);
+});
+
+Deno.test("doppelte Zahlen ungültig", () => {
+    const game = new Knobelscheit();
+    assertEquals(game.flip([4, 4], 8), false);
+});
+
+Deno.test("Ungültige Zahlen ablehnen", () => {
+    const game = new Knobelscheit();
+    assertEquals(game.flip([11], 11), false);
+});
